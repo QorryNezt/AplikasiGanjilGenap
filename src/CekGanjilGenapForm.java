@@ -14,7 +14,8 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
      */
     public CekGanjilGenapForm() {
         initComponents();
-        
+        getContentPane().setBackground(new java.awt.Color(230, 230, 250)); 
+        // Mengganti warna BG menjadi Ungu Lavender
     }
     private void clearFields() {
         // Method Membersihkan Semua Fields
