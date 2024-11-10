@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -53,6 +56,11 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
         jLabel3.setText("Ganjil atau Genap?");
 
         txtAngka.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        txtAngka.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAngkaFocusGained(evt);
+            }
+        });
         txtAngka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAngkaActionPerformed(evt);
@@ -63,12 +71,27 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
 
         btnCheck.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnCheck.setText("CHECK");
+        btnCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckActionPerformed(evt);
+            }
+        });
 
         btnClear.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnQuit.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnQuit.setText("QUIT");
+        btnQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,6 +147,35 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
     private void txtAngkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAngkaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAngkaActionPerformed
+
+    private void txtAngkaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAngkaFocusGained
+        clearFields(); // Menghapus Isi semua field secara auto
+    }//GEN-LAST:event_txtAngkaFocusGained
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearFields(); // Menghapus Isi semua field secara manual
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        try {
+            int number = Integer.parseInt(txtAngka.getText());
+            if (number % 2 == 0) {
+                txtOutput.setText("Genap");
+            } else {
+                txtOutput.setText("Ganjil");
+            }
+        } catch (NumberFormatException e) {
+            txtOutput.setText("Masukkan angka yang valid");
+        }
+    }//GEN-LAST:event_btnCheckActionPerformed
+
+    private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+        int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin keluar?", "Konfirmasi Keluar",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }
+    }//GEN-LAST:event_btnQuitActionPerformed
 
     /**
      * @param args the command line arguments
