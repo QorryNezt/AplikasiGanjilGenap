@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,8 +19,10 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
      */
     public CekGanjilGenapForm() {
         initComponents();
-        getContentPane().setBackground(new java.awt.Color(230, 230, 250)); 
-        // Mengganti warna BG menjadi Ungu Lavender
+        getContentPane().setBackground(Color.pink);
+        // Mengganti warna BG menjadi Pink~!
+        txtOutput.setFocusable(false); 
+        // Membuat text hasil menjadi tidak bisa di edit ataupun di highlight
     }
     private void clearFields() {
         // Method Membersihkan Semua Fields
@@ -66,8 +70,18 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
                 txtAngkaActionPerformed(evt);
             }
         });
+        txtAngka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAngkaKeyTyped(evt);
+            }
+        });
 
         txtOutput.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        txtOutput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtOutputFocusGained(evt);
+            }
+        });
 
         btnCheck.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         btnCheck.setText("CHECK");
@@ -160,22 +174,40 @@ public class CekGanjilGenapForm extends javax.swing.JFrame {
         try {
             int number = Integer.parseInt(txtAngka.getText());
             if (number % 2 == 0) {
-                txtOutput.setText("Genap");
+                txtOutput.setText("Angka ini adalah angka Genap");
             } else {
-                txtOutput.setText("Ganjil");
+                txtOutput.setText("Angka ini adalah angka Ganjil");
             }
         } catch (NumberFormatException e) {
-            txtOutput.setText("Masukkan angka yang valid");
+            txtOutput.setText("Masukkan angka yang valid!"); 
+            //Placeholder Exception (Jikalau terpakai >x<) 
+            // Selama mencoba gak pernah muncul
         }
     }//GEN-LAST:event_btnCheckActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+        // Fungsi button Keluar atau Quit. Sebelum menutup program akan ada konfirmasi terdahulu.
         int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin keluar?", "Konfirmasi Keluar",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.YES_OPTION) {
         System.exit(0);
     }
     }//GEN-LAST:event_btnQuitActionPerformed
+
+    private void txtAngkaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAngkaKeyTyped
+        // Handle Exception jika user menekan tombol bukan numerik 
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+            // Consume event agar mencegah masukan tidak numerik
+            evt.consume();
+            // Menampilkan Pesan Peringatan
+            JOptionPane.showMessageDialog(this, "Hanya menerima inputan angka saja!", "Invalid input >x<", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtAngkaKeyTyped
+
+    private void txtOutputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOutputFocusGained
+        // Gak jadi di pake :(
+    }//GEN-LAST:event_txtOutputFocusGained
 
     /**
      * @param args the command line arguments
