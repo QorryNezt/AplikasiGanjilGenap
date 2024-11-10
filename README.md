@@ -6,5 +6,18 @@
  Yaitu dengan meng-highlight text field pertama atau menekan tombol "CLEAR".
  Quit button yang juga memberikan konfirmasi sebelum menutup programnya.
 
- Berikut Sample pictures dari berjalannya program saya:
- 
+Berikut Sample pictures dari berjalannya program saya:
+Tampilan Awal:
+![App Screenshot](https://github.com/QorryNezt/AplikasiGanjilGenap/blob/main/sample%20pics/base.png?raw=true)
+
+Tampilan Warning:
+![App Screenshot](https://github.com/QorryNezt/AplikasiGanjilGenap/blob/main/sample%20pics/warn.png?raw=true)
+
+Tampilan Angka Ganjil:
+![App Screenshot](https://github.com/QorryNezt/AplikasiGanjilGenap/blob/main/sample%20pics/ganjil.png?raw=true)
+
+Tampilan Angka Genap:
+![App Screenshot](https://github.com/QorryNezt/AplikasiGanjilGenap/blob/main/sample%20pics/genap.png?raw=true)
+
+Tampilan Konfirmasi Keluar:
+![App Screenshot](https://github.com/QorryNezt/AplikasiGanjilGenap/blob/main/sample%20pics/quit.png?raw=true)
